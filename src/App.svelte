@@ -26,8 +26,8 @@
       <Home />
     </Route>
 
-    <Route path="/job/:id">
-      <Job />
+    <Route path="/job/:id" let:params>
+      <Job id={params.id} />
     </Route>
   </div>
 </Router>

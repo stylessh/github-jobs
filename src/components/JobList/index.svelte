@@ -1,6 +1,6 @@
 <script>
   import Job from "../Job/index.svelte";
-
+  import Spinner from "../Spinner/index.svelte";
   export let jobs;
   export let loading;
 </script>
@@ -27,6 +27,6 @@
 
     <!-- if still loading data -->
   {:else}
-    <p>loading...</p>
+    <Spinner />
   {/if}
 </ul>

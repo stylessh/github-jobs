@@ -37,6 +37,8 @@
   .job .right img {
     display: inline-block;
     object-fit: contain;
+    vertical-align: top;
+
     width: 90px;
     height: 90px;
 
@@ -47,6 +49,9 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+
+    text-align: center;
+
     width: 90px;
     height: 90px;
 
