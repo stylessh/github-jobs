@@ -1,0 +1,53 @@
+:root {
+  /* fonts */
+  --main-font: "Poppins", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+
+  /* breakpoints */
+  --desktop: 1440px;
+  --mobile: 768px;
+}
+
+body {
+  /* colors */
+  --main-color: #1e86ff;
+  --secondary-color: #334680;
+
+  --github-color: #282538;
+  --optional-color: #b9bdcf;
+
+  --aux-primary-color: #ffffff;
+  --aux-secondary-color: #f6f7fb;
+}
+
+body.dark {
+  /* colors */
+  --main-color: #1e86ff;
+  --secondary-color: #334680;
+
+  --github-color: #282538;
+  --optional-color: #b9bdcf;
+
+  --aux-primary-color: #ffffff;
+  --aux-secondary-color: #f6f7fb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  border: none;
+  outline: none;
+}
+
+body {
+  background: var(--aux-secondary-color);
+}
+
+.infinite-status-prompt {
+  font-family: var(--main-font);
+
+  color: var(--optional-color);
+  font-weight: 500;
+}
