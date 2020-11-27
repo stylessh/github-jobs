@@ -1,3 +1,8 @@
+/**
+ * Format a date to time ago.
+ * @param {Date} date Date to format
+ */
+
 export function getTimeInterval(date) {
   // getting seconds
   let seconds = Math.floor((Date.now() - date) / 1000);
