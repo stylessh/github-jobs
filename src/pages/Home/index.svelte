@@ -7,8 +7,10 @@
 <style>
   .grid-2 {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
     width: 100%;
+
+    column-gap: 2em;
 
     margin-top: 2em;
   }
