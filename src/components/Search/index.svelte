@@ -24,6 +24,8 @@
     border-radius: 4px;
 
     background: var(--aux-primary-color);
+
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .search .form .icon {
