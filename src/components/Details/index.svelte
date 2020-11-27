@@ -1,7 +1,38 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  // handle location input
+  function location() {
+    dispatch("location", { value, newData: true });
+
+    value = "";
+  }
+
+  // handle full time checkbox
+  function fullType() {
+    dispatch("fulltime", { fullTime });
+  }
+
+  // handle default locations
+  function chooseLocation(e) {
+    const country = e.target.dataset.name;
+
+    dispatch("choose", { country });
+  }
+
+  let defaultCountries = ["London", "Amsterdam", "New York", "Berlin"];
+
+  let value = "";
+  let fullTime = false;
+  let choosed = "London";
 </script>
 
 <style>
+  .details {
+    padding-right: 2em;
+  }
   .details .checkbox {
     margin-right: 0.5em;
     vertical-align: text-bottom;
@@ -74,7 +105,14 @@
 
 <section class="details">
   <article class="full-time">
-    <label> <input type="checkbox" class="checkbox" /> Full time </label>
+    <label>
+      <input
+        type="checkbox"
+        class="checkbox"
+        bind:checked={fullTime}
+        on:change={fullType} />
+      Full time
+    </label>
   </article>
 
   <article class="location">
@@ -82,14 +120,26 @@
 
     <div class="search">
       <ion-icon name="earth-outline" class="icon" />
-      <input type="text" placeholder="City, state, zip code or country" />
+      <input
+        type="text"
+        placeholder="City, state, zip code or country"
+        bind:value
+        on:keyup={({ key }) => (key === 'Enter' && value.length > 0 ? location() : null)} />
     </div>
   </article>
 
   <article class="countries">
-    <label> <input type="checkbox" class="checkbox" /> London </label>
-    <label> <input type="checkbox" class="checkbox" /> Amsterdam </label>
-    <label> <input type="checkbox" class="checkbox" /> New York </label>
-    <label> <input type="checkbox" class="checkbox" /> Berlin </label>
+    {#each defaultCountries as country}
+      <label>
+        <input
+          type="radio"
+          class="checkbox"
+          data-name={country}
+          value={country}
+          bind:group={choosed}
+          on:change={chooseLocation} />
+        {country}
+      </label>
+    {/each}
   </article>
 </section>

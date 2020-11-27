@@ -1,3 +1,17 @@
+<script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  function search() {
+    dispatch("search", { value });
+
+    value = "";
+  }
+
+  let value = "";
+</script>
+
 <style>
   .search {
     display: flex;
@@ -71,10 +85,15 @@
 </style>
 
 <section class="search">
-  <form class="form">
-    <ion-icon name="bag-outline" class="icon"></ion-icon>
-    <input type="text" placeholder="Title, companies, expertise of benefits" />
+  <form class="form" on:submit={(e) => e.preventDefault()}>
+    <ion-icon name="bag-outline" class="icon" />
 
-    <button> Search </button>
+    <input
+      type="text"
+      bind:value
+      on:keyup={({ key }) => (key === 'Enter' && value.length > 0 ? search() : null)}
+      placeholder="Title, companies, expertise of benefits" />
+
+    <button on:click={search}> Search </button>
   </form>
 </section>
