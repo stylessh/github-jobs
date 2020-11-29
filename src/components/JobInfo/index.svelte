@@ -10,13 +10,13 @@
     color: var(--secondary-color);
   }
 
-  .job-info .header {
-    display: grid;
-    grid-template-rows: 15vh 15vh;
+  .job-info .top {
+    margin-bottom: 2em;
   }
 
   .job-info .job-title {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     font-weight: 400;
@@ -115,10 +115,8 @@
     color: var(--main-color);
   }
 
-  @media screen and (max-width: 768px) {
-    .job-info .job-title {
-      flex-wrap: wrap;
-    }
+  :global(.job-info .text ul) {
+    list-style-position: inside;
   }
 </style>
 
