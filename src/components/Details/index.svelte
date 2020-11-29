@@ -22,11 +22,17 @@
     dispatch("choose", { country });
   }
 
-  let defaultCountries = ["London", "Amsterdam", "New York", "Berlin"];
+  let defaultCountries = [
+    "Remote",
+    "London",
+    "Amsterdam",
+    "New York",
+    "Berlin",
+  ];
 
   let value = "";
   let fullTime = false;
-  let choosed = "London";
+  let choosed = "Remote";
 </script>
 
 <style>
