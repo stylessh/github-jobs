@@ -4,15 +4,20 @@
   import { getJobs } from "../../api/index";
 
   import Search from "../../components/Search/index.svelte";
+  import Pagination from "../../components/Pagination/index.svelte";
   import Details from "../../components/Details/index.svelte";
   import JobList from "../../components/JobList/index.svelte";
 
   // default search values
   let title = "";
-  let page = "";
-  let location = "London";
+  let page = 1;
+  let location = "Remote";
   let fullTime = false;
   let loading = true;
+
+  // pagination
+  let isFirstPage = true;
+  let isLastPage = false;
 
   export let jobs = [];
 
@@ -21,7 +26,10 @@
    */
   function handleSearch({ detail }) {
     title = detail.value;
-    page = 0;
+    page = 1;
+
+    isFirstPage = true;
+    isLastPage = false;
 
     getData();
   }
@@ -30,10 +38,11 @@
     Handle search location
    */
   function handleLocation({ detail }) {
-    console.log(detail.value);
-
     location = detail.value;
-    page = 0;
+    page = 1;
+
+    isFirstPage = true;
+    isLastPage = false;
 
     getData();
   }
@@ -43,6 +52,10 @@
    */
   function handleFullTime({ detail }) {
     fullTime = detail.fullTime;
+    page = 1;
+
+    isFirstPage = true;
+    isLastPage = false;
 
     getData();
   }
@@ -52,6 +65,33 @@
    */
   function handleChoose({ detail }) {
     location = detail.country;
+    page = 1;
+
+    isFirstPage = true;
+    isLastPage = false;
+
+    getData();
+  }
+
+  function handleBackPage() {
+    // if not first page
+    if (page !== 1) {
+      page = page - 1;
+
+      isLastPage = false;
+
+      getData();
+    } else {
+      // set first page
+      isFirstPage = true;
+      isLastPage = false;
+    }
+  }
+
+  function handleNextPage() {
+    // set next page
+    page = page + 1;
+    isFirstPage = false;
 
     getData();
   }
@@ -66,6 +106,18 @@
     // get data
     const data = await getJobs(page, location, title, fullTime);
     jobs = data;
+
+    // if no data = last page
+    if (data.length === 0) {
+      isLastPage = true;
+      isFirstPage = false;
+    }
+
+    // if first page on fetch
+    if (page === 1) {
+      isFirstPage = true;
+      isLastPage = false;
+    }
 
     // disabling spinner
     loading = false;
@@ -102,3 +154,9 @@
     on:choose={handleChoose} />
   <JobList {jobs} {loading} />
 </div>
+
+<Pagination
+  on:back={handleBackPage}
+  on:next={handleNextPage}
+  {isFirstPage}
+  {isLastPage} />
