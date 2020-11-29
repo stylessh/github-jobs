@@ -24,13 +24,14 @@ body {
 body.dark {
   /* colors */
   --main-color: #1e86ff;
-  --secondary-color: #334680;
+  --secondary-color: #b9bdcf;
 
-  --github-color: #282538;
-  --optional-color: #b9bdcf;
+  --github-color: #ffffff;
+  --optional-color: #334680;
+  --not-found-color: #f2f2f2;
 
-  --aux-primary-color: #ffffff;
-  --aux-secondary-color: #f6f7fb;
+  --aux-primary-color: #282538;
+  --aux-secondary-color: #2a2a2a;
 }
 
 * {
@@ -40,13 +41,23 @@ body.dark {
 
   border: none;
   outline: none;
+
+  /* transition for theme */
+  transition: color 0.2s ease-in, background 0.2s ease-in;
 }
 
 body {
+  font-size: 16px;
   background: var(--aux-secondary-color);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
 }

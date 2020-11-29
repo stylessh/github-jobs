@@ -23,7 +23,5 @@ export const getJob = async (id) => {
   const res = await fetch(complete_api);
   const data = await res.json();
 
-  console.log(data);
-
   return data;
 };

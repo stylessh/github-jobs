@@ -2,14 +2,22 @@
   import { getJob } from "../../api/index";
   import { onMount } from "svelte";
   import { Link } from "svelte-routing";
-  import JobInfo from "../../components/JobInfo/index.svelte";
 
-  export let id, job;
+  import JobInfo from "../../components/JobInfo/index.svelte";
+  import Spinner from "../../components/Spinner/index.svelte";
+
+  export let id,
+    job,
+    loading = true;
 
   onMount(async () => {
+    loading = true;
+
     const data = await getJob(id);
 
     job = data;
+
+    loading = false;
   });
 </script>
 
@@ -66,29 +74,42 @@
   .job .left .how-to-apply .info * {
     width: 100%;
   }
+
+  @media screen and (max-width: 768px) {
+    .job {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
-{#if job}
-  <section class="job">
-    <article class="left">
-      <div class="to-back">
-        <Link to="/">
-          <ion-icon name="chevron-back-outline" class="icon" />
-          Back to search
-        </Link>
-      </div>
-
-      <div class="how-to-apply">
-        <h4>How to apply</h4>
-
-        <div class="info">
-          {@html job.how_to_apply}
+{#if !loading}
+  {#if job}
+    <section class="job">
+      <article class="left">
+        <div class="to-back">
+          <Link to="/">
+            <ion-icon name="chevron-back-outline" class="icon" />
+            Back to search
+          </Link>
         </div>
-      </div>
-    </article>
 
-    <article class="right">
-      <JobInfo {job} />
-    </article>
-  </section>
+        <div class="how-to-apply">
+          <h4>How to apply</h4>
+
+          <div class="info">
+            <!-- parsing to html all the info -->
+            {@html job.how_to_apply}
+          </div>
+        </div>
+      </article>
+
+      <article class="right">
+        <JobInfo {job} />
+      </article>
+    </section>
+  {/if}
+
+  <!-- put loading spinner -->
+{:else}
+  <Spinner />
 {/if}

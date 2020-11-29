@@ -30,11 +30,11 @@
     transform: translateY(-5px);
   }
 
-  .job .right {
+  .job .left {
     display: flex;
   }
 
-  .job .right img {
+  .job .left img {
     display: inline-block;
     object-fit: contain;
     vertical-align: top;
@@ -45,7 +45,7 @@
     border-radius: 4px;
   }
 
-  .job .right .not-found {
+  .job .left .not-found {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -65,28 +65,28 @@
     border-radius: 4px;
   }
 
-  .job .right .info {
+  .job .left .info {
     margin-left: 1em;
     color: var(--secondary-color);
 
     font-family: var(--secondary-font);
   }
 
-  .job .right .info .company {
+  .job .left .info .company {
     font-weight: 700;
     font-size: 0.8em;
 
     margin-bottom: 0.5em;
   }
 
-  .job .right .info .position {
+  .job .left .info .position {
     font-weight: 400;
     font-size: 1.2em;
 
     margin-bottom: 0.5em;
   }
 
-  .job .right .info .type {
+  .job .left .info .type {
     display: inline-block;
 
     font-size: 0.8em;
@@ -98,14 +98,14 @@
     padding: 0.4em 0.5em;
   }
 
-  .job .left {
+  .job .right {
     font-family: var(--secondary-font);
     color: var(--optional-color);
 
     font-weight: 500;
   }
 
-  .job .left div {
+  .job .right div {
     display: inline-flex;
     align-items: center;
 
@@ -114,15 +114,31 @@
     font-size: 0.8em;
   }
 
-  .job .left .icon {
+  .job .right .icon {
     font-size: 1.5em;
     margin-right: 0.3em;
+  }
+
+  @media screen and (max-width: 768px) {
+    .job {
+      flex-wrap: wrap;
+    }
+
+    .job .left .position {
+      margin: 0.5em 0;
+    }
+
+    .job .right {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+    }
   }
 </style>
 
 <Link to="/job/{job.id}">
   <li class="job">
-    <div class="right">
+    <div class="left">
       {#if job.company_logo}
         <img src={job.company_logo} alt={job.company} />
       {:else}
@@ -142,7 +158,7 @@
       </div>
     </div>
 
-    <div class="left">
+    <div class="right">
       <div class="location">
         <ion-icon name="earth-outline" class="icon" />
         <p>{job.location}</p>
