@@ -25,10 +25,13 @@
     margin-bottom: 0.5em;
   }
 
+  .job-info .job-title h2 {
+    margin-right: 1em;
+  }
+
   .job-info .job-title .type {
     display: inline-block;
 
-    margin: 0 1em;
     padding: 0.4em 0.5em;
 
     font-size: 0.8em;
@@ -115,10 +118,6 @@
   @media screen and (max-width: 768px) {
     .job-info .job-title {
       flex-wrap: wrap;
-    }
-
-    .job-info .job-title .type {
-      margin: 0;
     }
   }
 </style>
