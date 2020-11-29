@@ -70,7 +70,7 @@
   .search .form button {
     display: inline-block;
     padding: 0.8em 2.5vw;
-    margin: 0 0.4em;
+    margin: 0 0.5em;
 
     align-self: center;
     cursor: pointer;
@@ -93,7 +93,7 @@
     }
 
     .search .form button {
-      padding: auto 1vw;
+      padding: 1.2em 1vw;
     }
   }
 </style>

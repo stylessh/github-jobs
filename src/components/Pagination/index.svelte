@@ -3,10 +3,6 @@
 
   export let isFirstPage, isLastPage;
 
-  $: {
-    console.log({ isFirstPage, isLastPage });
-  }
-
   const dispatch = createEventDispatcher();
 
   const back = () => {
