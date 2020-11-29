@@ -152,6 +152,7 @@
 
         <h3 class="position">{job.title}</h3>
 
+        <!-- setting badge if full time -->
         {#if job.type === 'Full Time'}
           <div class="type">{job.type}</div>
         {/if}
@@ -166,6 +167,7 @@
 
       <div class="created">
         <ion-icon name="time-outline" class="icon" />
+        <!-- formatting date to time ago -->
         <p>{getTimeInterval(new Date(job.created_at))}</p>
       </div>
     </div>

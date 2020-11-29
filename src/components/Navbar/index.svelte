@@ -1,33 +1,48 @@
 <script>
   import { onMount } from "svelte";
+
+  // initial theme
   let dark_mode = false;
 
+  function setDark() {
+    document.body.classList.add("dark");
+    dark_mode = true;
+  }
+
+  function setLight() {
+    document.body.classList.remove("dark");
+    dark_mode = false;
+  }
+
   function getTheme() {
+    // getting saved theme
     const theme = localStorage.getItem("dark_mode");
 
     if (theme === "true") {
-      document.body.classList.add("dark");
-      dark_mode = true;
+      // if dark mode
+      setDark();
     } else {
-      document.body.classList.remove("dark");
-      dark_mode = false;
+      // if light mode
+      setLight();
     }
   }
 
   function handleTheme() {
     if (dark_mode === false) {
-      document.body.classList.add("dark");
-      dark_mode = true;
+      // changing to dark
+      setDark();
       localStorage.setItem("dark_mode", "true");
     } else {
-      document.body.classList.remove("dark");
-      dark_mode = false;
+      // changing to light
+      setLight();
       localStorage.setItem("dark_mode", "false");
     }
 
+    // get theme again
     getTheme();
   }
 
+  // on page load get theme
   onMount(() => {
     getTheme();
   });

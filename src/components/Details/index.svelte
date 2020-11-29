@@ -102,7 +102,6 @@
     margin: 1em 0;
   }
 
-
   @media screen and (max-width: 768px) {
     .details {
       padding: 0;
@@ -136,6 +135,7 @@
   </article>
 
   <article class="countries">
+    <!-- generate a input with each default country  -->
     {#each defaultCountries as country}
       <label>
         <input

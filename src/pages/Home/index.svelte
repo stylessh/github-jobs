@@ -7,7 +7,7 @@
   import Details from "../../components/Details/index.svelte";
   import JobList from "../../components/JobList/index.svelte";
 
-  // default values
+  // default search values
   let title = "";
   let page = "";
   let location = "London";
@@ -16,6 +16,9 @@
 
   export let jobs = [];
 
+  /**
+    Handle search by title
+   */
   function handleSearch({ detail }) {
     title = detail.value;
     page = 0;
@@ -23,6 +26,9 @@
     getData();
   }
 
+  /**
+    Handle search location
+   */
   function handleLocation({ detail }) {
     console.log(detail.value);
 
@@ -32,18 +38,27 @@
     getData();
   }
 
+  /**
+    Handle full-time search
+   */
   function handleFullTime({ detail }) {
     fullTime = detail.fullTime;
 
     getData();
   }
 
+  /**
+    Handle default search location
+   */
   function handleChoose({ detail }) {
     location = detail.country;
 
     getData();
   }
 
+  /**
+    Get the jobs with the parameters.
+   */
   async function getData() {
     // setting spinner
     loading = true;

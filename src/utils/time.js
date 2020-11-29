@@ -11,6 +11,7 @@ export function getTimeInterval(date) {
   let unit = "second";
   let direction = "ago";
 
+  // start counting
   if (seconds < 0) {
     seconds = -seconds;
     direction = "from now";
@@ -32,6 +33,8 @@ export function getTimeInterval(date) {
     value = Math.floor(seconds / 60);
     unit = "minute";
   }
+
+  // formatting text with date
   if (value != 1) unit = unit + "s";
   return value + " " + unit + " " + direction;
 }

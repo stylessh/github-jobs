@@ -3,6 +3,7 @@
 
   const dispatch = createEventDispatcher();
 
+  // handle search
   function search() {
     dispatch("search", { value });
 
