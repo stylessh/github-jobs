@@ -24,6 +24,7 @@
   }
 </style>
 
+<!-- router -->
 <Router {url}>
   <div class="container">
     <Navbar />
@@ -33,6 +34,7 @@
     </Route>
 
     <Route path="/job/:id" let:params>
+      <!-- getting id by url param -->
       <Job id={params.id} />
     </Route>
   </div>

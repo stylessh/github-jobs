@@ -11,12 +11,14 @@
     loading = true;
 
   onMount(async () => {
+    // setting spinner
     loading = true;
 
+    // fetch data
     const data = await getJob(id);
-
     job = data;
 
+    // disabling  spinner
     loading = false;
   });
 </script>
