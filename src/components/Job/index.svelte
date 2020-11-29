@@ -1,6 +1,6 @@
 <script>
   import { getTimeInterval } from "../../utils/time";
-  import { Link } from "svelte-routing";
+  import { navigate } from "svelte-routing";
 
   export let job;
 </script>
@@ -136,40 +136,38 @@
   }
 </style>
 
-<Link to="/job/{job.id}">
-  <li class="job">
-    <div class="left">
-      {#if job.company_logo}
-        <img src={job.company_logo} alt={job.company} />
-      {:else}
-        <div class="not-found">
-          <p>not found</p>
-        </div>
+<li class="job" on:click={navigate(`/job/${job.id}`)}>
+  <div class="left">
+    {#if job.company_logo}
+      <img src={job.company_logo} alt={job.company} width="90" height="90" />
+    {:else}
+      <div class="not-found">
+        <p>not found</p>
+      </div>
+    {/if}
+
+    <div class="info">
+      <h3 class="company">{job.company}</h3>
+
+      <h5 class="position">{job.title}</h5>
+
+      <!-- setting badge if full time -->
+      {#if job.type === 'Full Time'}
+        <div class="type">{job.type}</div>
       {/if}
+    </div>
+  </div>
 
-      <div class="info">
-        <h5 class="company">{job.company}</h5>
-
-        <h3 class="position">{job.title}</h3>
-
-        <!-- setting badge if full time -->
-        {#if job.type === 'Full Time'}
-          <div class="type">{job.type}</div>
-        {/if}
-      </div>
+  <div class="right">
+    <div class="location">
+      <ion-icon name="earth-outline" class="icon" />
+      <p>{job.location}</p>
     </div>
 
-    <div class="right">
-      <div class="location">
-        <ion-icon name="earth-outline" class="icon" />
-        <p>{job.location}</p>
-      </div>
-
-      <div class="created">
-        <ion-icon name="time-outline" class="icon" />
-        <!-- formatting date to time ago -->
-        <p>{getTimeInterval(new Date(job.created_at))}</p>
-      </div>
+    <div class="created">
+      <ion-icon name="time-outline" class="icon" />
+      <!-- formatting date to time ago -->
+      <p>{getTimeInterval(new Date(job.created_at))}</p>
     </div>
-  </li>
-</Link>
+  </div>
+</li>

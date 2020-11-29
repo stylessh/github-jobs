@@ -10,7 +10,6 @@ export const getJobs = async (page, location, title, fullTime) => {
     baseApiURL +
     `positions.json?page=${page}&location=${location}&description=${title?.toLowerCase()}&full_time=${fullTime}`;
 
-  console.log(page);
   // fetch data
   const res = await fetch(complete_api);
 
