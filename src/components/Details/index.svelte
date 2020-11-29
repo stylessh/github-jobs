@@ -101,6 +101,13 @@
   .details .countries label {
     margin: 1em 0;
   }
+
+
+  @media screen and (max-width: 768px) {
+    .details {
+      padding: 0;
+    }
+  }
 </style>
 
 <section class="details">

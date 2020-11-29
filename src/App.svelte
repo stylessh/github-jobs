@@ -16,6 +16,12 @@
 
     margin: 2em auto;
   }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 90%;
+    }
+  }
 </style>
 
 <Router {url}>

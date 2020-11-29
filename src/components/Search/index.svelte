@@ -29,8 +29,8 @@
 
   .search .form {
     position: relative;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1em 70% 1fr;
     align-items: center;
 
     width: 60%;
@@ -67,9 +67,11 @@
   }
 
   .search .form button {
-    padding: 0.8em 2.5em;
+    display: inline-block;
+    padding: 0.8em 2.5vw;
     margin: 0 0.4em;
 
+    align-self: center;
     cursor: pointer;
 
     font-family: var(--secondary-font);
@@ -81,6 +83,17 @@
     color: var(--aux-primary-color);
 
     border-radius: 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .search .form {
+      grid-template-columns: 1em 60% 1fr;
+      width: 90%;
+    }
+
+    .search .form button {
+      padding: auto 1vw;
+    }
   }
 </style>
 

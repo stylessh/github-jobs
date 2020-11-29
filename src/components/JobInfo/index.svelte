@@ -111,6 +111,16 @@
 
     color: var(--main-color);
   }
+
+  @media screen and (max-width: 768px) {
+    .job-info .job-title {
+      flex-wrap: wrap;
+    }
+
+    .job-info .job-title .type {
+      margin: 0;
+    }
+  }
 </style>
 
 <article class="job-info">

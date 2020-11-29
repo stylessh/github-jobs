@@ -70,6 +70,12 @@
 
     margin-top: 2em;
   }
+
+  @media screen and (max-width: 768px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <Search on:search={handleSearch} />
